@@ -1,29 +1,39 @@
+app.controller('AlbumCtrl', function($scope, $rootScope, PlayerFactory){
+  // PlayerFactory.start
+  console.log(PlayerFactory);
+  $scope.currentSong = PlayerFactory.getCurrentSong;
+  // PlayerFactory.audio.addEventListener('ended', function () {
+
+  //   PlayerFactory.next();
+  // });
+  $scope.playing = PlayerFactory.isPlaying;
+  $scope.$on('pause', PlayerFactory.pause;
+  $scope.$on('play', PlayerFactory.start;
+
+});
+
+// footer
 app.controller('PlayerCtrl', function($scope, $rootScope, PlayerFactory){
+  // PlayerFactory.getCurrentSong
+  // PlayerFactory.pause
+  
+ 
+  $scope.toggle = PlayerFactory.resume;
+  $scope.next = PlayerFactory.next;    
+  $scope.previous = PlayerFactory.previous;
 
-  // initialize audio player
-  // var audio = document.createElement('audio');
-  audio.addEventListener('ended', function () {
-    $scope.next();
-  });
-  audio.addEventListener('timeupdate', function () {
-    $scope.progress = 100 * audio.currentTime / audio.duration;
-    $scope.$digest();
-  });
+  // PlayerFactory.audio.addEventListener('timeupdate', function () {
+  //   $scope.progress = 100 * PlayerFactory.getProgress();
+  //   $scope.$digest();
+  // });
 
-  // state variables
-  $scope.currentSong;
-  $scope.playing = false;
+});
 
-  // main toggle
-  $scope.toggle = function (song) {
-    if ($scope.playing) $rootScope.$broadcast('pause');
-    else $rootScope.$broadcast('play', song);
-  }
+
+
 
   // incoming events (from Album or toggle)
-  $scope.$on('pause', pause);
-  $scope.$on('play', play);
-
+ 
   // functionality
   // function pause () {
   //   audio.pause();
@@ -44,7 +54,4 @@ app.controller('PlayerCtrl', function($scope, $rootScope, PlayerFactory){
   // }
 
   // outgoing events (to Album)
-  $scope.next = function(){ $rootScope.$broadcast('next'); };
-  $scope.prev = function(){ $rootScope.$broadcast('prev'); };
 
-});

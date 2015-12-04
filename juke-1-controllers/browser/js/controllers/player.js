@@ -1,16 +1,3 @@
-app.controller('AlbumCtrl', function($scope, $rootScope, PlayerFactory){
-  // PlayerFactory.start
-  console.log(PlayerFactory);
-  $scope.currentSong = PlayerFactory.getCurrentSong;
-  // PlayerFactory.audio.addEventListener('ended', function () {
-
-  //   PlayerFactory.next();
-  // });
-  $scope.playing = PlayerFactory.isPlaying;
-  $scope.$on('pause', PlayerFactory.pause;
-  $scope.$on('play', PlayerFactory.start;
-
-});
 
 // footer
 app.controller('PlayerCtrl', function($scope, $rootScope, PlayerFactory){
@@ -18,14 +5,20 @@ app.controller('PlayerCtrl', function($scope, $rootScope, PlayerFactory){
   // PlayerFactory.pause
   
  
-  $scope.toggle = PlayerFactory.resume;
-  $scope.next = PlayerFactory.next;    
-  $scope.previous = PlayerFactory.previous;
-
-  // PlayerFactory.audio.addEventListener('timeupdate', function () {
-  //   $scope.progress = 100 * PlayerFactory.getProgress();
-  //   $scope.$digest();
-  // });
+  $scope.toggle = function(song){
+    return PlayerFactory.start(song);
+  }
+  $scope.next = function(){
+    return PlayerFactory.next(); 
+    }   
+  $scope.previous = function(){
+    return PlayerFactory.previous();
+  }
+  $scope.progress = function(){
+    return 100*PlayerFactory.getProgress();
+  }
+  
+  
 
 });
 

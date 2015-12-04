@@ -25,8 +25,8 @@ describe('`PlayerFactory` factory', function() {
       TEST SPECS
   /------------------*/
 
-  xdescribe('#start', function() {
-    xit('plays given song', function() {
+  describe('#start', function() {
+    it('plays given song', function() {
       chai.spy.on(HTMLAudioElement.prototype, 'load')
       chai.spy.on(HTMLAudioElement.prototype, 'play')
       PlayerFactory.start({ audioUrl: 'http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3' })
@@ -34,7 +34,7 @@ describe('`PlayerFactory` factory', function() {
       expect(HTMLAudioElement.prototype.play).to.have.been.called()
     })
 
-    xit('stops previous song when playing new song', function() {
+    it('stops previous song when playing new song', function() {
       chai.spy.on(PlayerFactory, 'pause')
       chai.spy.on(HTMLAudioElement.prototype, 'play')
       var song1 = { audioUrl: 'http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3' }
@@ -46,31 +46,31 @@ describe('`PlayerFactory` factory', function() {
     })
   })
 
-  xdescribe('#pause', function() {
-    xit('calls audio\'s `pause`', function() {
+  describe('#pause', function() {
+    it('calls audio\'s `pause`', function() {
       chai.spy.on(HTMLAudioElement.prototype, 'pause')
       PlayerFactory.pause()
       expect(HTMLAudioElement.prototype.pause).to.have.been.called()
     })
   })
 
-  xdescribe('#resume', function() {
-    xit('calls audio\'s `play`', function() {
+  describe('#resume', function() {
+    it('calls audio\'s `play`', function() {
       chai.spy.on(HTMLAudioElement.prototype, 'play')
       PlayerFactory.resume()
       expect(HTMLAudioElement.prototype.play).to.have.been.called()
     })
   })
 
-  xdescribe('#isPlaying', function() {
-    xit('returns false when song is not playing', function() {
+  describe('#isPlaying', function() {
+    it('returns false when song is not playing', function() {
       expect(PlayerFactory.isPlaying()).to.equal(false)
     })
-    xit('returns true when song is playing', function() {
+    it('returns true when song is playing', function() {
       PlayerFactory.start({ audioUrl: 'http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3' })
       expect(PlayerFactory.isPlaying()).to.equal(true)
     })
-    xit('toggles with pause/resume', function() {
+    it('toggles with pause/resume', function() {
       PlayerFactory.start({ audioUrl: 'http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3' })
       expect(PlayerFactory.isPlaying()).to.equal(true)
       PlayerFactory.pause()
@@ -80,16 +80,16 @@ describe('`PlayerFactory` factory', function() {
     })
   })  
 
-  xdescribe('#getCurrentSong', function() {
+  describe('#getCurrentSong', function() {
     it('defaults to null', function() {
       expect(PlayerFactory.getCurrentSong()).to.equal(null)
     })
-    xit('returns the song that is playing', function() {
+    it('returns the song that is playing', function() {
       var song = { audioUrl: 'http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3' }
       PlayerFactory.start(song)
       expect(PlayerFactory.getCurrentSong()).to.equal(song)
     })
-    xit('returns the current song even when paused', function() {
+    it('returns the current song even when paused', function() {
       var song = { audioUrl: 'http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3' }
       PlayerFactory.start(song)
       PlayerFactory.pause()

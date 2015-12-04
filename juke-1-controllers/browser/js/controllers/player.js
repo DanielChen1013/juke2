@@ -18,7 +18,13 @@ app.controller('PlayerCtrl', function($scope, $rootScope, PlayerFactory){
     return 100*PlayerFactory.getProgress();
   }
   
-  
+  $scope.currentSong = function(){
+    return PlayerFactory.getCurrentSong();
+  }
+
+  $scope.isPlaying = function(){
+    return PlayerFactory.isPlaying();
+  }
 
 });
 

@@ -21,8 +21,12 @@ app.controller('AlbumCtrl', function($http, $scope, $rootScope, PlayerFactory){
   //   $scope.$on('pause', PlayerFactory.pause);
   //   $scope.$on('play', PlayerFactory.start);
 
-     $scope.currentSong = function(){
+  $scope.currentSong = function(){
     return PlayerFactory.getCurrentSong();
+  }
+
+  $scope.isPlaying = function(){
+    return PlayerFactory.isPlaying();
   }
 
   });
